@@ -150,6 +150,12 @@ find_package(SofaGeneral REQUIRED)
 find_package(SofaMisc REQUIRED)
 find_package(Eigen3 REQUIRED)
 
+
+if(PLUGIN_SOFAPYTHON3)
+    message(FATAL_ERROR "SofaPython cannot be built alongside SofaPython3. Please set PLUGIN_SOFAPYTHON3 to OFF")
+endif()
+
+
 GET_FILENAME_COMPONENT(LIBRARY_NAME ${CMAKE_SHARED_LIBRARY_PREFIX}${PROJECT_NAME}${CMAKE_SHARED_LIBRARY_SUFFIX} NAME_WE)
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     set(LIBRARY_NAME ${LIBRARY_NAME}_d)
